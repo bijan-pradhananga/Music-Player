@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://kit.fontawesome.com/c85c5e1d0c.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <title>Music Player</title>
+</head>
+<body>
+    <div class="main_div">
+        <div class="music_container">
+            <h2 id="title">Snow Fairy</h2>
+            <h3 id="artist">Fairy Tail</h3>
+            <div class="img_container">
+                <img src="images/snow fairy.jpg" alt="album">
+            </div>
+            <audio src="music/Snow Fairy.mp3" id="myAudio"></audio>
+            <!-- progress bar -->
+            <div class="progressbar_container" id="progressbar_container">
+                <div class="duration_meter">
+                    <div id="current_time">0:00</div>
+                    <div id="duration">1:30</div>
+                </div>
+                <div class="progress_div" id="progress_div">
+                    <div id="progress" class="progress"></div>
+                </div>
+                
+            </div>
+
+            <!-- Controls -->
+            <div class="music_controls">
+                <i class="fa-solid fa-repeat repeat" id="repeat" title="repeat"></i>
+                <i class="fa-solid fa-caret-left" id="previous" title="previous"></i>
+                <i class="fa-solid fa-play main_button" id="play" title="play"></i>
+                <i class="fa-solid fa-caret-right" id="next" title="next"></i>
+                <i class="fa-solid fa-shuffle shuffle" id="shuffle" title="shuffle"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
