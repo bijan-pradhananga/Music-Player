@@ -54,6 +54,9 @@ let songs = [
     }
 ]
 
+// to keep a copy of that array
+let songs1 = songs.slice();
+
 let isPlaying = false;
 //for play
 const playMusic = () => {
@@ -107,9 +110,15 @@ const nextSong = () =>{
 }
 
 const previousSong = () =>{
-    songIndex = (songIndex - 1 + songs.length)% songs.length;
-    loadSongs(songs[songIndex]);
-    playMusic();
+    if(isShuffling==true){
+        loadSongs(newSongs[songIndex]);
+        songIndex = (songIndex - 1 + newSongs.length)% newSongs.length;
+        playMusic();
+    }else{
+        songIndex = (songIndex - 1 + songs.length)% songs.length;
+        loadSongs(songs[songIndex]);
+        playMusic();
+    }
 }
 
 
@@ -148,36 +157,35 @@ repeat.addEventListener('click', ()=>{
 let isShuffling = false;
 let newSongs;
 
-const shuffleSongs = () =>{
-    let currentIndex = songs.length,  randomIndex;
-
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+const shuffleSongs = (array) =>{
+    let shuffledArray = [];
+    let usedIndexes = [];
   
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [songs[currentIndex], songs[randomIndex]] = [
-        songs[randomIndex], songs[currentIndex]];
-    }
-    console.log(songs);
-    return songs;
-}
+    let i = 0;
+    while (i < array.length) {
+      let randomNumber = Math.floor(Math.random() * array.length);
+        if (!usedIndexes.includes(randomNumber)) {
+          shuffledArray.push(array[randomNumber]);
+          usedIndexes.push(randomNumber);
+          i++;
+          }j
+      }
+      return shuffledArray;
+  }
 
 
 const shuffleOn = () =>{
     isShuffling= true;
     shuffleButton.style.color = `red`;
-    newSongs = shuffleSongs();
+    newSongs = shuffleSongs(songs1);
+    console.log(newSongs);
     loopOff();
 };
 
 const shuffleOff = () =>{
     isShuffling= false;
     shuffleButton.style.color = `#111111`;
-    newSongs = songs;
+    console.log(songs);
 };
 
 
